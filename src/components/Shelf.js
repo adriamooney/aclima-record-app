@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
 } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 
@@ -31,7 +32,7 @@ export default function Shelf({ records, shelf, dispatch }) {
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'space-between'
         }}
       >
         {renaming ? (
@@ -52,7 +53,7 @@ export default function Shelf({ records, shelf, dispatch }) {
           onClick={() => dispatch({ type: 'deleteShelf', id: shelf.id })}
           style={{ marginLeft: '1rem' }}
         >
-          Remove
+          <DeleteForeverIcon />
         </Button>
       </Box>
 
@@ -60,9 +61,11 @@ export default function Shelf({ records, shelf, dispatch }) {
         key={shelf.id}
         className='shelf'
         style={{
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#23a6d5',
           minHeight: '10rem',
           marginBottom: '1rem',
+          overflowX:'auto',
+          borderRadius: '4px'
         }}
       >
         
@@ -72,9 +75,8 @@ export default function Shelf({ records, shelf, dispatch }) {
               ref={provided.innerRef}
               style={{
                 display: 'flex',
-                flexDirection: 'row',
-                overflow: 'auto',
-                justifyContent: 'space-evenly'
+                flexDirection: 'row'
+                
               }}
             >
               {shelfRecords.length ? (

@@ -10,18 +10,21 @@ import {
   Select,
 } from '@material-ui/core';
 
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+
 export default function Record({ record, shelf, shelves, dispatch }) {
   return (
-    <ListItem key={record.id} style={{ flex: 1, flexBasis:0 }}>
-      <Card style={{ flex: 1, flexBasis:0, textAlign:'center' }}>
+    <ListItem key={record.id}>
+      <Card className="record">
+        <div className="record-content">
         <CardContent>
-          <p><b>Title:</b> {record.title}</p>
-          <p><b>Artist:</b> {record.artists.join(', ')}</p>
-          <p><b>Label:</b> {record.label}</p>
-          <p><b>Formats:</b> {record.formats.join(', ')}</p>
+          <p className="record-title"><b>{record.title}</b></p>
+          <p><em>{record.artists.join(', ')}</em></p>
+          <small>{record.label} / {record.formats.join(', ')}</small>
         </CardContent>
 
-        <CardActions>
+       
           {shelf ? (
             <Button
               onClick={() =>
@@ -32,11 +35,11 @@ export default function Record({ record, shelf, shelves, dispatch }) {
                 })
               }
             >
-              Remove
+              <DeleteForeverIcon />
             </Button>
           ) : Object.keys(shelves).length ? (
-            <FormControl style={{ minWidth: '120px' }}>
-              <InputLabel>Add to shelf</InputLabel>
+            <FormControl className="record-action">
+              <InputLabel><AddBoxIcon className="addBoxIcon" /></InputLabel>
               <Select
                 data-testid="add-shelf"
                 value=""
@@ -56,7 +59,8 @@ export default function Record({ record, shelf, shelves, dispatch }) {
               </Select>
             </FormControl>
           ) : null}
-        </CardActions>
+       
+        </div>
       </Card>
     </ListItem>
   );

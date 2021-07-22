@@ -26,6 +26,7 @@ export default function Shelves({ records, shelves, dispatch }) {
         style={{
           height: 'calc(100vh - 12rem)',
           overflowY: 'scroll',
+          paddingRight: '1em'
         }}
       >
         {Object.values(shelves).map(shelf => (

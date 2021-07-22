@@ -101,8 +101,14 @@ export default function App() {
   
   return (
     
-    <Container>
+    <Container className="main">
       <h1>Record Shelves App</h1>
+
+      {!data &&
+          <Grid container spacing={12}>
+          <h4>Enter your Discog username to start organizing your record collection</h4>
+          </Grid>
+      }
 
       <Grid item xs={12}>
         <form onSubmit={handleSubmit}
@@ -123,31 +129,33 @@ export default function App() {
           /> 
 
         </form>
+        
       </Grid> 
 
       {loading && <div><CircularProgress /></div>}
 
       {data &&
- 
+  
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <RecordsContainer
-            records={records}
-            shelves={shelves}
-            dispatch={dispatch}
-            username={username}
-            page={page}
-            handlePageChange={ handlePageChange }
-          />
-          
-        </Grid>
+          <Grid item sm={12} md={4}>
+            <RecordsContainer
+              records={records}
+              shelves={shelves}
+              dispatch={dispatch}
+              username={username}
+              page={page}
+              handlePageChange={ handlePageChange }
+            />
+            
+          </Grid>
 
-        <Grid item xs={12} sm={8}>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Shelves records={records} shelves={shelves} dispatch={dispatch} />
-          </DragDropContext>
-        </Grid>
-      </Grid> } 
+          <Grid item sm={12} md={8}>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Shelves records={records} shelves={shelves} dispatch={dispatch} />
+            </DragDropContext>
+          </Grid>
+        </Grid> 
+      } 
     </Container>
 
   );

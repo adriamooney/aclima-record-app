@@ -5,9 +5,85 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main {
+  background: #fff;
+  padding: 1rem;
+  margin: 2em;
+  border-radius:8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.records-container {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  overflow-y:scroll;
+  background: #e73c7e;
+}
+
+.records-container .record, .shelf .record {
+  background: #222;
+  border-radius: 50%;
+  color: #fff;
+  height: 18em;
+  position: relative;
+  width: 18em;
+  margin: auto;
+  display:flex;
+}
+.shelf .record {
+  width:14em;
+  height:14em;
+}
+.record-title {
+  font-family:'Courier New', Courier, monospace;
+}
+
+.records-container .record-content, .shelf .record .record-content {
+  margin: 0.75em;
+  text-align: center;
+  align-items:center;
+  margin:auto;
+  color: #fff;
+}
+.records-container .record p, .shelf .record p {
+  margin: .5em 0 0 0;
+}
+.record-action {
+  color:black;
+}
+.record-action .addBoxIcon {
+  color:#fff;
+}
+.record-action .MuiSelect-icon {
+  right:-8px;
+}
+
+.record-action .MuiInputLabel-formControl {
+  left:6px;
+}
+.record button, .record button:focus, .record button:hover {
+  font-size:10px;
+  color: #fff;
 }
