@@ -30,7 +30,9 @@ export const reducer = (state, action) => {
       };
     case 'addRecordToShelf':
       const recordIdsOnShelf = state[action.shelfId].records;
-
+      // if shelf already contains record, don't add it again
+      // return records array again as is.  otherwise add the new
+      // recordId to the records array
       if(recordIdsOnShelf.includes(action.recordId)) {
         alert('You have already added this record to the shelf');
         return {

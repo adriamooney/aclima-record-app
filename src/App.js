@@ -77,22 +77,33 @@ export default function App() {
         return;
       }
 
-      if (source.droppableId === destination.droppableId) {
+      if(source.droppableId === 'records') {
         dispatch({
-          type: 'reorderInShelf',
-          shelfId: source.droppableId,
-          oldIndex: source.index,
-          newIndex: destination.index,
-        });
-      } else {
-        dispatch({
-          type: 'moveBetweenShelves',
-          oldShelf: source.droppableId,
-          newShelf: destination.droppableId,
-          oldIndex: source.index,
-          newIndex: destination.index,
+          type: 'addRecordToShelf',
+          shelfId: destination.droppableId,
+          recordId: source.index,
         });
       }
+      else {
+        if (source.droppableId === destination.droppableId) {
+          dispatch({
+            type: 'reorderInShelf',
+            shelfId: source.droppableId,
+            oldIndex: source.index,
+            newIndex: destination.index,
+          });
+        } else {
+          dispatch({
+            type: 'moveBetweenShelves',
+            oldShelf: source.droppableId,
+            newShelf: destination.droppableId,
+            oldIndex: source.index,
+            newIndex: destination.index,
+          });
+        }
+      }
+
+ 
     },
     [dispatch],
   );
@@ -136,9 +147,12 @@ export default function App() {
 
       {data &&
   
+      <DragDropContext onDragEnd={onDragEnd}>
       <Grid container spacing={3}>
           <Grid item sm={12} md={4}>
+         
             <RecordsContainer
+              className="records-container-dnd"
               records={records}
               shelves={shelves}
               dispatch={dispatch}
@@ -150,11 +164,12 @@ export default function App() {
           </Grid>
 
           <Grid item sm={12} md={8}>
-            <DragDropContext onDragEnd={onDragEnd}>
+           
               <Shelves records={records} shelves={shelves} dispatch={dispatch} />
-            </DragDropContext>
+            
           </Grid>
         </Grid> 
+        </DragDropContext>
       } 
     </Container>
 

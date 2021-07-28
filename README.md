@@ -15,15 +15,15 @@ Welcome to the Record Shelves App, a tool for organizing your record collection 
 
 ## Outstanding Tasks
 
-| Name | Type | Description |
-| --- | --- | --- |
-| Paginate records | Feature | Currently only the first page of results is fetched, implement fetching for subsequent pages. |
-| Let users specify Discogs username | Feature | Currently only records belonging to `blacklight` are considered, the app should provide a place to gather a new username and fetch records for them.
-| Drag and drop to add record to shelf | Enhancement | Dragging records between shelves and reordering them within a shelf works, but selecting an initial shelf from a dropdown is less intuitive. Implement dragging a record from the list of records onto its first shelf. |
-| Improve overall UX | Enhancement | Identify areas of interaction within the app that are unpleasant and reduce that friction. |
-| Improve overall styles | Enhancement | Make the template your own, add colors and change layout based on design choices you find preferable. One way to start is by making the app more responsive at different page widths. |
-| Only add record once to shelf | Defect | A record can be added to a specific shelf multiple times, which leads to jarring behavior when dragging one of the duplicates around or removing it. Only one copy of a record should be allowed on a given shelf.
-| Add tests | Debt | The test coverage for the app's functionality is lacking, improve coverage on key interactions. |
+| Name | Type | Description | Status |
+| --- | --- | --- | --- |
+| Paginate records | Feature | Currently only the first page of results is fetched, implement fetching for subsequent pages. | Done, but there is a bug |
+| Let users specify Discogs username | Feature | Currently only records belonging to `blacklight` are considered, the app should provide a place to gather a new username and fetch records for them. | Done |
+| Drag and drop to add record to shelf | Enhancement | Dragging records between shelves and reordering them within a shelf works, but selecting an initial shelf from a dropdown is less intuitive. Implement dragging a record from the list of records onto its first shelf. | In Progress, there is a bug same error as pagination bug, may be related |
+| Improve overall UX | Enhancement | Identify areas of interaction within the app that are unpleasant and reduce that friction. | Some work done, could do more |
+| Improve overall styles | Enhancement | Make the template your own, add colors and change layout based on design choices you find preferable. One way to start is by making the app more responsive at different page widths. | Some work done, could do more |
+| Only add record once to shelf | Defect | A record can be added to a specific shelf multiple times, which leads to jarring behavior when dragging one of the duplicates around or removing it. Only one copy of a record should be allowed on a given shelf. | Done, simple change in reducer.js |
+| Add tests | Debt | The test coverage for the app's functionality is lacking, improve coverage on key interactions. | NOT done |
 
 ## Developing
 

@@ -18,6 +18,7 @@ export default function Shelf({ records, shelf, dispatch }) {
     records.find(record => id === record.id),
   );
 
+
   const [renaming, setRenaming] = useState(false);
   const [inputName, setInputName] = useState(shelf.name);
 
@@ -69,10 +70,11 @@ export default function Shelf({ records, shelf, dispatch }) {
         }}
       >
         
-        <Droppable droppableId={shelf.id} direction="horizontal">
+        <Droppable droppableId={shelf.id} direction="horizontal" type='ROOT'>
           {(provided, snapshot) => (
             <List
               ref={provided.innerRef}
+              {...provided.droppableProps}
               style={{
                 display: 'flex',
                 flexDirection: 'row'
@@ -81,10 +83,13 @@ export default function Shelf({ records, shelf, dispatch }) {
             >
               {shelfRecords.length ? (
                 shelfRecords.map((record, index) => (
+     
+                
                   <Draggable
                     key={record.id}
                     draggableId={record.id}
                     index={index}
+                    type='ROOT'
                   >
                     {(provided, snapshot) => (
                       <span
@@ -105,6 +110,7 @@ export default function Shelf({ records, shelf, dispatch }) {
               ) : (
                 <p>No records in shelf</p>
               )}
+              
             </List>
           )}
         </Droppable>
