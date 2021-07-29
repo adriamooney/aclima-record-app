@@ -143,16 +143,17 @@ export default function App() {
         
       </Grid> 
 
-      {loading && <div><CircularProgress /></div>}
+      {!data && loading && <div><CircularProgress /></div>}
 
       {data &&
   
       <DragDropContext onDragEnd={onDragEnd}>
       <Grid container spacing={3}>
-          <Grid item sm={12} md={4}>
-         
+          <Grid item sm={12} md={4} className={loading && 'loading'}>
+ 
             <RecordsContainer
               className="records-container-dnd"
+              style={{minHeight: '100%'}}
               records={records}
               shelves={shelves}
               dispatch={dispatch}

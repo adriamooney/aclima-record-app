@@ -41,6 +41,9 @@ code {
   overflow-y:scroll;
   background: #e73c7e;
 }
+.loading {
+  opacity:.5;
+}
 
 .records-container .record, .shelf .record {
   background: #222;

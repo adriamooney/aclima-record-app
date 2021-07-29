@@ -1,0 +1,37 @@
+1. when you first load the page you see
+enter your disco username and the input field
+controlled by watching for the 'data' state. If there is no data from discog, then this will show.
+
+2. Once the user enters a username from Discog, the loading state is set to true to show loading spinner while the fetchRecords method is called
+
+3. the fetchRecords method brings in the username and the page state to make a call fo the discog api
+if the response is ok and returns content, then the data state is set to true, the records are returned, and the loading state is set to false. (Pagination component added from Material UI)
+
+4.  If the response is ok but there are no results, the records state is set to an empty array.
+In either case, as long as response is ok, then data state is still set to true and something will be shown to the user.  Once data is set to true for the first time, it will always be true (after first successful call to fetchRecords)
+
+5.  The handlePageChange event handler will get the value of the page clicked and then call fetchRecords again
+
+6.  In the RecordsContainer component, if the records array is empty, then a message will show to the user that either there was a problem retrieving data from the user or the user may not exist.  This handles both cases - either the user has no records or the there was a problem getting the response from the api.  
+
+7.  the reducer method contained a type called 'addRecordToShelf'.  A check was added here so records cannot be added twice to the same shelf.
+
+8. Drag and Drop addition:
+	-Attempted to add drag and drop between record collection and shelves by: 
+		-expanding DragDropContext around grid
+		- adding a droppable and draggable component around the RecordsContainer component
+		- adding a check in the onDragEnd callback to see if the record is coming from the records droppable.  If so, then use the reducer type addRecordToShelf.  
+
+Issues for discussion:
+
+-Adding the drag and drop is causing some issues visually (records seem duplicated, and the records in the record collection are moving around when you drag them but you really don't want that) I didn't implement this quite right but not sure how to go about it.  
+
+BUGS:
+There is an error that occurs when dragging a record from record collection onto a shelf, as well as when paginating or adding records to shelf from different pages.  
+
+TypeError: Cannot read property 'id' of undefined
+src/components/Shelf.js:90
+It seems to not know about 'record' even though it should...I tried debugging this quite a bit but have been unsuccessful
+
+
+
